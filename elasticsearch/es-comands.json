@@ -1,0 +1,45 @@
+DELETE javamagazine
+
+PUT /javamagazine
+
+PUT /javamagazine/biblioteca/_mapping 
+{
+    "biblioteca" : {
+        "properties" : {
+            "autor" : {"type" : "string" },
+            "mes" : {"type" : "date", "format" : "MM"},
+            "ano" : {"type" : "date", "format" : "yyyy" },
+            "titulo" : {"type" : "string" },
+            "texto" : {"type" : "string" },
+            "assunto" : {"type" : "string" }
+        }
+    }
+}
+
+POST /javamagazine/biblioteca/1
+{ 
+    "autor" : "Luiz",
+	"mes" : "Setembro",
+	"ano" : "2014",
+	"titulo" : "Sua primeira aplicação em Elastic Search...",
+	"texto" : "O objetivo do Elastic Search é apoiar …",
+	"assunto" : "Elasticsearch"
+}
+
+GET /javamagazine/biblioteca/1?pretty=true
+
+PUT /javamagazine/biblioteca/1
+{ 
+    "autor" : "Luiz Santana",
+    "mes" : "Setembro",
+	"ano" : "2014",
+	"titulo" : "Sua primeira aplicação em Elastic Search...",
+	"texto" : "O objetivo do Elastic Search é apoiar …",
+	"assunto" : "Elasticsearch"
+}
+
+DELETE /javamagazine/biblioteca/1
+
+GET /javamagazine/_search?q=assunto:elasticsearch
+
+
